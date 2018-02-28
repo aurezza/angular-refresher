@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Angular Refresher</title>
+        <link rel="author" href="aurezza.txt">
+    </head>
+
+    <body ng-controller="MainController as mc">
+        <h2>Sample bind with paragraph</h2>
+        <input type="text" ng-model="sampleParagraph" name="" placeholder="Enter text for the paragraph">
+        <p ng-bind="sampleParagraph"></p>
+        
+        <h2>Sample looping</h2>
+        <ul>
+            <li ng-repeat="favFruit in mc.favFruits">{{favFruit.name}} | {{favFruit.color}}</li>
+        </ul>
+        <h2>Sample looping with ng-if condition</h2>
+        <ul>
+            <li ng-repeat="favFruit in mc.favFruits" ng-if='favFruit.color == "yellow"'>{{favFruit.name}} | {{favFruit.color}}</li>
+        </ul>
+
+        <h2>Show div if object is true</h2>
+        <button ng-click="mc.showHideDiv()">Show Something</button> <br/>
+        <div ng-show="mc.isVisible"><br/>I am true, therefore I am visible</div>
+
+        <h2>Show an alert on button click</h2>
+        <button ng-click="mc.clickAlert()">Click Me</button> 
+        
+        <h2>Sample of ng-options</h2>
+        <select ng-model="chosenFavColor" ng-options="favColor for favColor in mc.favColors"><option value="" selected disabled hidden>Choose here</option></select>
+
+        <div><br/>Fave color: <input type ng-model="chosenFavColor"></div>
+
+        <h2>Sample (getting data from) factory</h2>
+        <ul>
+            <li ng-repeat="snack in mc.snacks">{{snack.name}} is {{snack.flavor}}</li>
+        </ul>
+
+        <h2>Sample component</h2>
+        <sample>
+            <left>
+                <button>Left</button>
+            </left>
+            <right>
+                <button>Right</button>
+            </right>
+        </sample>
+
+        <h2>Sample directive</h2>
+        <button meh="mc.linkFunc()" sample="test" id="anotherTest">Clicky</button>
+
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+        <script src="sample-factory.js"></script>
+        <script src="sample.component.js"></script>
+        <script src="meh.directive.js"></script>
+
+    </body>
+    <style type="text/css">
+    left {
+        display: inline-block
+    }
+
+    center {
+        display: inline-block;
+        margin: 0 10px;
+    }
+    </style>
+</html>
